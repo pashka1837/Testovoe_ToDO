@@ -14,7 +14,6 @@ export default function FilterRadioGroup() {
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const status = e.target.value;
-    console.log(status);
     dispatch(setFilter(status));
   }
 
