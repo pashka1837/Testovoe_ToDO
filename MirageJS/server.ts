@@ -17,6 +17,14 @@ export default function makeServer() {
         },
         { timing: 1000 }
       );
+      this.post(
+        "/tasks",
+        (schema, request) => {
+          const newTask = JSON.parse(request.requestBody);
+          return schema.db.tasks.insert(newTask);
+        },
+        { timing: 2000 }
+      );
     },
   });
 

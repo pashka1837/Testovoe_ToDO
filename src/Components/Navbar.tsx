@@ -7,8 +7,14 @@ import {
   Stack,
   Typography,
 } from "@mui/joy";
+import { useAppDispatch } from "../hooks/hooks";
+import { setIsCreateTaskOpen } from "../feature/appSlice";
 
 export default function Navbar() {
+  const dispatch = useAppDispatch();
+  function handleCreateTask() {
+    dispatch(setIsCreateTaskOpen(true));
+  }
   return (
     <Sheet
       color="primary"
@@ -16,7 +22,7 @@ export default function Navbar() {
       sx={{ borderRadius: "15px", px: 4 }}
     >
       <Stack direction="row" alignItems="center" sx={{ height: "100px" }}>
-        <Button>Create New Task</Button>
+        <Button onClick={handleCreateTask}>Create New Task</Button>
         <Stack>
           <Typography></Typography>
           <RadioGroup>

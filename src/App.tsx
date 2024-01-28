@@ -1,13 +1,15 @@
+import CreateTask from "./Components/CreateTask";
 import Navbar from "./Components/Navbar";
-import { useGetTasksQuery } from "./services/tasksAPI";
+import TaskList from "./Components/TaskList";
+import { useAppSelector } from "./hooks/hooks";
 
 function App() {
-  const { data, isLoading } = useGetTasksQuery();
-  if (isLoading) return <h2>loading...</h2>;
-  console.log(data);
+  const { isCreateTaskOpen } = useAppSelector((store) => store.app);
   return (
     <main>
       <Navbar />
+      <TaskList />
+      {isCreateTaskOpen && <CreateTask />}
     </main>
   );
 }

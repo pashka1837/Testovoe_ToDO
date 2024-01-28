@@ -23,9 +23,14 @@ export const appSlice = createSlice({
     setIsEditTaskOpen(state, action: PayloadAction<boolean>) {
       state.isEditTaskOpen = action.payload;
     },
+    setPopUpsClose(state) {
+      state.isEditTaskOpen = false;
+      state.isCreateTaskOpen = false;
+    },
   },
 });
 
-export const { setIsCreateTaskOpen } = appSlice.actions;
+export const { setIsCreateTaskOpen, setIsEditTaskOpen, setPopUpsClose } =
+  appSlice.actions;
 
 export default appSlice.reducer;

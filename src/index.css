@@ -13,3 +13,23 @@ nav {
   height: 100px;
   background-color: black;
 }
+
+.modalBG {
+  position: absolute;
+  inset: 0px;
+  display: grid;
+  place-items: center;
+  grid-template-columns: 1fr;
+  background-color: rgba(1, 1, 1, 0.6);
+  z-index: 2;
+}
+
+.tasksBoard {
+  padding: 3% 6%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  align-items: stretch;
+}
