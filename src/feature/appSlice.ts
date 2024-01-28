@@ -16,7 +16,7 @@ const initialState: CounterState = {
   isEditTaskOpen: false,
   isDeleteTaskOpen: false,
   isTaskOpen: false,
-  filter: "",
+  filter: "All",
 };
 
 export const appSlice = createSlice({
@@ -45,6 +45,9 @@ export const appSlice = createSlice({
     setCurTask(state, action: PayloadAction<TaskT | null>) {
       state.curTask = action.payload;
     },
+    setFilter(state, action: PayloadAction<string>) {
+      state.filter = action.payload;
+    },
   },
 });
 
@@ -55,6 +58,7 @@ export const {
   setDeleteTaskOpen,
   setTaskOpen,
   setCurTask,
+  setFilter,
 } = appSlice.actions;
 
 export default appSlice.reducer;

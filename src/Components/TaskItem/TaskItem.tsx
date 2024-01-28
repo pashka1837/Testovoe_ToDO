@@ -1,5 +1,4 @@
 import { Sheet, Stack, Typography } from "@mui/joy";
-
 import { useRef } from "react";
 import TaskButtonGroup from "./TaskButtonGroup";
 import { useAppDispatch } from "../../hooks/hooks";
@@ -9,7 +8,7 @@ export default function TaskItem({ task }: { task: TaskT }) {
   const dispatch = useAppDispatch();
   const checkBoxRef = useRef<HTMLSpanElement>(null);
 
-  const { id, title } = task;
+  const { title, isDone } = task;
 
   const handleOpenTask: handleClicksT = (e) => {
     e.stopPropagation();
@@ -24,7 +23,7 @@ export default function TaskItem({ task }: { task: TaskT }) {
   return (
     <Sheet
       onClick={handleOpenTask}
-      color={task.isDone ? "success" : "primary"}
+      color={isDone ? "success" : "primary"}
       variant="outlined"
       style={{
         borderRadius: "5px",

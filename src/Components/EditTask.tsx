@@ -7,7 +7,7 @@ import ModifyTask from "./ModifyTask/ModifyTask";
 
 export default function EditTask() {
   const dispatch = useAppDispatch();
-  const [updTask, { isLoading }] = useUpdTaskMutation();
+  const [updTask] = useUpdTaskMutation();
   const task = useAppSelector((store) => store.app.curTask);
 
   const { title, desc } = task!;

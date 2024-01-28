@@ -1,7 +1,7 @@
 import CreateTask from "./Components/CreateTask";
 import DeleteTask from "./Components/DeleteTask";
 import EditTask from "./Components/EditTask";
-import Navbar from "./Components/Navbar";
+import Navbar from "./Components/Navbar/Navbar";
 import SingleTask from "./Components/SingleTask";
 import TaskList from "./Components/TaskList";
 import { useAppSelector } from "./hooks/hooks";

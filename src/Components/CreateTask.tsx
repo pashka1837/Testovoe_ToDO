@@ -7,11 +7,10 @@ import { setCreateTaskOpen } from "../feature/appSlice";
 import { usePostTasksMutation } from "../services/tasksAPI";
 
 export default function CreateTask() {
-  const [inputs, setInputs] = useState<InputsStateT>({ title: "", desc: "" });
-
   const dispatch = useAppDispatch();
+  const [postTasks] = usePostTasksMutation();
 
-  const [postTasks, { isLoading }] = usePostTasksMutation();
+  const [inputs, setInputs] = useState<InputsStateT>({ title: "", desc: "" });
 
   const handleInpChange: handleInpChangeT = (e, name) => {
     const inp = e.target;
