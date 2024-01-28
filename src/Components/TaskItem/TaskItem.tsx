@@ -18,7 +18,6 @@ export default function TaskItem({ task }: { task: TaskT }) {
 
   return (
     <Sheet
-      data-testid="test1"
       onClick={handleOpenTask}
       color={task.isDone ? "success" : "primary"}
       variant="outlined"

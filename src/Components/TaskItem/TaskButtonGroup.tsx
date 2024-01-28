@@ -1,6 +1,9 @@
 import { Button, Checkbox, Stack } from "@mui/joy";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import CloseIcon from "@mui/icons-material/Close";
+import { useUpdTaskMutation } from "../../services/tasksAPI";
+import { useAppDispatch } from "../../hooks/hooks";
+import { setCurTask, setDeleteTaskOpen } from "../../feature/appSlice";
 
 export default function TaskButtonGroup({
   task,
@@ -9,13 +12,20 @@ export default function TaskButtonGroup({
   task: TaskT;
   checkBoxRef: React.RefObject<HTMLSpanElement>;
 }) {
+  const dispatch = useAppDispatch();
+  const [updTask, { isLoading }] = useUpdTaskMutation();
+
   const { id, isDone } = task;
   const color = task.isDone ? "success" : "primary";
 
-  function handleDoneTask() {}
+  function handleDoneTask() {
+    updTask({ ...task, isDone: !isDone });
+  }
 
   const handleDeleteTask: handleClicksT = (e) => {
     e.stopPropagation();
+    dispatch(setCurTask(task));
+    dispatch(setDeleteTaskOpen(true));
   };
 
   const handleEditTask: handleClicksT = (e) => {

@@ -34,9 +34,53 @@ export const tasksAPI = createApi({
         queryFulfilled.catch(patchResult.undo);
       },
     }),
+    deleteTask: builder.mutation<string, string>({
+      query: (taskID) => ({
+        url: `api/tasks`,
+        method: "DELETE",
+        body: taskID,
+      }),
+      invalidatesTags: (result, error, arg) => [
+        { type: "Task" as const, id: arg },
+      ],
+      async onQueryStarted(taskID, { dispatch, queryFulfilled }) {
+        const patchResult = dispatch(
+          tasksAPI.util.updateQueryData("getTasks", undefined, (draft) => {
+            return draft.filter((task) => task.id !== taskID);
+          })
+        );
+        queryFulfilled.catch(patchResult.undo);
+      },
+    }),
+    updTask: builder.mutation<string, TaskT>({
+      query: (task) => ({
+        url: `api/tasks`,
+        method: "PATCH",
+        body: task,
+      }),
+      invalidatesTags: (result, error, arg) => [
+        { type: "Task" as const, id: arg.id },
+      ],
+      async onQueryStarted(task, { dispatch, queryFulfilled }) {
+        const patchResult = dispatch(
+          tasksAPI.util.updateQueryData("getTasks", undefined, (draft) => {
+            const oldTaskIndex = draft.findIndex(
+              (oldTask) => oldTask.id === task.id
+            );
+            draft.splice(oldTaskIndex, 1, task);
+          })
+        );
+        queryFulfilled.catch(patchResult.undo);
+      },
+    }),
   }),
 });
 
-export const { useGetTasksQuery, usePostTasksMutation } = tasksAPI;
+export const {
+  useGetTasksQuery,
+  usePostTasksMutation,
+  useDeleteTaskMutation,
+  useUpdTaskMutation,
+} = tasksAPI;
 export const useQueryStateResult = () =>
   tasksAPI.endpoints.getTasks.useQueryState();

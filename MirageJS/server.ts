@@ -25,6 +25,24 @@ export default function makeServer() {
         },
         { timing: 2000 }
       );
+      this.delete(
+        "/tasks",
+        (schema, request) => {
+          const id = request.requestBody;
+          schema.db.tasks.remove(id);
+          return null;
+        },
+        { timing: 500 }
+      );
+      this.patch(
+        "/tasks",
+        (schema, request) => {
+          const updTask = JSON.parse(request.requestBody);
+          schema.db.tasks.update(updTask.id, updTask);
+          return null;
+        },
+        { timing: 500 }
+      );
     },
   });
 
