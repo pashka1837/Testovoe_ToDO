@@ -34,6 +34,7 @@ export const appSlice = createSlice({
       state.isCreateTaskOpen = false;
       state.isDeleteTaskOpen = false;
       state.isTaskOpen = false;
+      state.curTask = null;
     },
     setDeleteTaskOpen(state, action: PayloadAction<boolean>) {
       state.isDeleteTaskOpen = action.payload;

@@ -17,13 +17,12 @@ export default function TaskButtonGroup({
   checkBoxRef: React.RefObject<HTMLSpanElement>;
 }) {
   const dispatch = useAppDispatch();
-  const [updTask, { isLoading }] = useUpdTaskMutation();
+  const [updTask] = useUpdTaskMutation();
 
-  const { id, isDone } = task;
+  const { isDone } = task;
   const color = isDone ? "success" : "primary";
 
   function handleDoneTask(e: React.ChangeEvent<HTMLInputElement>) {
-    console.log(e.target.checked);
     updTask({ ...task, isDone: e.target.checked });
   }
 

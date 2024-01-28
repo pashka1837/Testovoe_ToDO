@@ -2,13 +2,13 @@ import CreateTask from "./Components/CreateTask";
 import DeleteTask from "./Components/DeleteTask";
 import EditTask from "./Components/EditTask";
 import Navbar from "./Components/Navbar";
+import SingleTask from "./Components/SingleTask";
 import TaskList from "./Components/TaskList";
 import { useAppSelector } from "./hooks/hooks";
 
 function App() {
-  const { isCreateTaskOpen, isDeleteTaskOpen, isEditTaskOpen } = useAppSelector(
-    (store) => store.app
-  );
+  const { isCreateTaskOpen, isDeleteTaskOpen, isEditTaskOpen, isTaskOpen } =
+    useAppSelector((store) => store.app);
   return (
     <main>
       <Navbar />
@@ -16,6 +16,7 @@ function App() {
       {isCreateTaskOpen && <CreateTask />}
       {isDeleteTaskOpen && <DeleteTask />}
       {isEditTaskOpen && <EditTask />}
+      {isTaskOpen && <SingleTask />}
     </main>
   );
 }

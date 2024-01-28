@@ -2,8 +2,11 @@ import { Sheet, Stack, Typography } from "@mui/joy";
 
 import { useRef } from "react";
 import TaskButtonGroup from "./TaskButtonGroup";
+import { useAppDispatch } from "../../hooks/hooks";
+import { setCurTask, setTaskOpen } from "../../feature/appSlice";
 
 export default function TaskItem({ task }: { task: TaskT }) {
+  const dispatch = useAppDispatch();
   const checkBoxRef = useRef<HTMLSpanElement>(null);
 
   const { id, title } = task;
@@ -14,6 +17,8 @@ export default function TaskItem({ task }: { task: TaskT }) {
       checkBoxRef.current!.firstElementChild!.firstElementChild!
         .firstElementChild;
     if (e.target === cheBoxEl) return;
+    dispatch(setCurTask(task));
+    dispatch(setTaskOpen(true));
   };
 
   return (
