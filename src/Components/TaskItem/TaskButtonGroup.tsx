@@ -3,7 +3,11 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import CloseIcon from "@mui/icons-material/Close";
 import { useUpdTaskMutation } from "../../services/tasksAPI";
 import { useAppDispatch } from "../../hooks/hooks";
-import { setCurTask, setDeleteTaskOpen } from "../../feature/appSlice";
+import {
+  setCurTask,
+  setDeleteTaskOpen,
+  setEditTaskOpen,
+} from "../../feature/appSlice";
 
 export default function TaskButtonGroup({
   task,
@@ -16,10 +20,11 @@ export default function TaskButtonGroup({
   const [updTask, { isLoading }] = useUpdTaskMutation();
 
   const { id, isDone } = task;
-  const color = task.isDone ? "success" : "primary";
+  const color = isDone ? "success" : "primary";
 
-  function handleDoneTask() {
-    updTask({ ...task, isDone: !isDone });
+  function handleDoneTask(e: React.ChangeEvent<HTMLInputElement>) {
+    console.log(e.target.checked);
+    updTask({ ...task, isDone: e.target.checked });
   }
 
   const handleDeleteTask: handleClicksT = (e) => {
@@ -30,6 +35,8 @@ export default function TaskButtonGroup({
 
   const handleEditTask: handleClicksT = (e) => {
     e.stopPropagation();
+    dispatch(setCurTask(task));
+    dispatch(setEditTaskOpen(true));
   };
 
   return (
@@ -41,7 +48,7 @@ export default function TaskButtonGroup({
     >
       <Checkbox
         ref={checkBoxRef}
-        defaultChecked={isDone}
+        checked={isDone}
         onChange={handleDoneTask}
         label="Done"
         color={color}
@@ -49,7 +56,6 @@ export default function TaskButtonGroup({
       />
       <Stack direction="row" spacing={1}>
         <Button
-          data-testid="handleEditTask"
           color={color}
           onClick={handleEditTask}
           variant="plain"
@@ -58,7 +64,6 @@ export default function TaskButtonGroup({
           <MoreVertIcon />
         </Button>
         <Button
-          data-testid="handleDeleteTask"
           color={color}
           onClick={handleDeleteTask}
           variant="plain"

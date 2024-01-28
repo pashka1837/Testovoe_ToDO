@@ -23,10 +23,10 @@ export const appSlice = createSlice({
   name: "tasks",
   initialState,
   reducers: {
-    setIsCreateTaskOpen(state, action: PayloadAction<boolean>) {
+    setCreateTaskOpen(state, action: PayloadAction<boolean>) {
       state.isCreateTaskOpen = action.payload;
     },
-    setIsEditTaskOpen(state, action: PayloadAction<boolean>) {
+    setEditTaskOpen(state, action: PayloadAction<boolean>) {
       state.isEditTaskOpen = action.payload;
     },
     setPopUpsClose(state) {
@@ -48,8 +48,8 @@ export const appSlice = createSlice({
 });
 
 export const {
-  setIsCreateTaskOpen,
-  setIsEditTaskOpen,
+  setCreateTaskOpen,
+  setEditTaskOpen,
   setPopUpsClose,
   setDeleteTaskOpen,
   setTaskOpen,

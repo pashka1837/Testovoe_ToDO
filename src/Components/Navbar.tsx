@@ -1,19 +1,11 @@
-import {
-  Box,
-  Button,
-  Radio,
-  RadioGroup,
-  Sheet,
-  Stack,
-  Typography,
-} from "@mui/joy";
+import { Button, Radio, RadioGroup, Sheet, Stack, Typography } from "@mui/joy";
 import { useAppDispatch } from "../hooks/hooks";
-import { setIsCreateTaskOpen } from "../feature/appSlice";
+import { setCreateTaskOpen } from "../feature/appSlice";
 
 export default function Navbar() {
   const dispatch = useAppDispatch();
   function handleCreateTask() {
-    dispatch(setIsCreateTaskOpen(true));
+    dispatch(setCreateTaskOpen(true));
   }
   return (
     <Sheet

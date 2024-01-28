@@ -29,7 +29,6 @@ export default function TaskItem({ task }: { task: TaskT }) {
     >
       <Stack spacing={2} p={2}>
         <TaskButtonGroup task={task} checkBoxRef={checkBoxRef} />
-
         <Typography
           sx={{ wordBreak: "break-word", pr: "10px" }}
           level="title-lg"

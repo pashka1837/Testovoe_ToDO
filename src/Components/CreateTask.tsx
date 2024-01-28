@@ -3,7 +3,7 @@ import { useState } from "react";
 import ModifyTask from "./ModifyTask/ModifyTask";
 import ModalBG from "./ModalBG";
 import { useAppDispatch } from "../hooks/hooks";
-import { setIsCreateTaskOpen } from "../feature/appSlice";
+import { setCreateTaskOpen } from "../feature/appSlice";
 import { usePostTasksMutation } from "../services/tasksAPI";
 
 export default function CreateTask() {
@@ -29,7 +29,7 @@ export default function CreateTask() {
     };
     postTasks(newTask);
     setInputs({ title: "", desc: "" });
-    dispatch(setIsCreateTaskOpen(false));
+    dispatch(setCreateTaskOpen(false));
   }
 
   const componValues: ComponValuesT = {
