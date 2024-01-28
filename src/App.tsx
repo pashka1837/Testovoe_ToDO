@@ -1,3 +1,4 @@
+import Navbar from "./Components/Navbar";
 import { useGetTasksQuery } from "./services/tasksAPI";
 
 function App() {
@@ -5,9 +6,9 @@ function App() {
   if (isLoading) return <h2>loading...</h2>;
   console.log(data);
   return (
-    <>
-      <h1>hey</h1>
-    </>
+    <main>
+      <Navbar />
+    </main>
   );
 }
 

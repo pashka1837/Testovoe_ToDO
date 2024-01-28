@@ -1,8 +1,12 @@
 import { EnhancedStore, configureStore } from "@reduxjs/toolkit";
+import appSlice from "../feature/appSlice";
 import { tasksAPI } from "../services/tasksAPI";
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    app: appSlice,
+    [tasksAPI.reducerPath]: tasksAPI.reducer,
+  },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(tasksAPI.middleware),
 });
