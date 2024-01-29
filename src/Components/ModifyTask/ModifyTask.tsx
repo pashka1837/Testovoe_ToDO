@@ -1,6 +1,5 @@
 import { Sheet } from "@mui/joy";
-import FormHead from "./FormHead";
-import FormBody from "./FormBody";
+import { FormHead, FormBody } from "./index";
 
 export default function ModifyTask({
   handleSubmit,

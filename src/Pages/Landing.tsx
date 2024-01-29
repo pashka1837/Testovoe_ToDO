@@ -1,9 +1,11 @@
 import { useAppSelector } from "../hooks/hooks";
-import CreateTask from "../Components/CreateTask";
-import DeleteTask from "../Components/DeleteTask";
-import EditTask from "../Components/EditTask";
-import SingleTask from "../Components/SingleTask";
-import TaskList from "../Components/TaskList";
+import {
+  CreateTask,
+  DeleteTask,
+  EditTask,
+  SingleTask,
+  TaskList,
+} from "../Components/index";
 
 export default function Landing() {
   const { isCreateTaskOpen, isDeleteTaskOpen, isEditTaskOpen, isTaskOpen } =

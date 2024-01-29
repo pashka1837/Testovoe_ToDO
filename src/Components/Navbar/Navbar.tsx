@@ -1,8 +1,8 @@
+import { memo } from "react";
 import { Button, Sheet, Stack, Typography } from "@mui/joy";
 import { useAppDispatch } from "../../hooks/hooks";
 import { setCreateTaskOpen } from "../../feature/appSlice";
-import FilterRadioGroup from "./FilterRadioGroup";
-import { memo } from "react";
+import { FilterRadioGroup, LogOutBtn } from "./index";
 
 const Navbar = memo(() => {
   const dispatch = useAppDispatch();
@@ -26,6 +26,7 @@ const Navbar = memo(() => {
           <Typography>Filter By:</Typography>
           <FilterRadioGroup />
         </Stack>
+        <LogOutBtn />
       </Stack>
     </Sheet>
   );

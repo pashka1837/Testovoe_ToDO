@@ -25,16 +25,19 @@ export default function FilterRadioGroup() {
   return (
     <RadioGroup value={filter} onChange={handleChange}>
       <Stack direction="row" spacing={2}>
-        {Object.entries(colors).map((stat: string[]) => (
-          <Radio
-            size="sm"
-            key={stat.at(0)}
-            color={stat.at(1)}
-            value={stat.at(0)}
-            label={stat.at(0)}
-            checked={stat.at(0) === filter}
-          />
-        ))}
+        {Object.entries(colors).map((stat: [string, string]) => {
+          const color = colors[`${stat.at(0)}`];
+          return (
+            <Radio
+              size="sm"
+              key={stat.at(0)}
+              color={stat.at(1)}
+              value={stat.at(0)}
+              label={stat.at(0)}
+              checked={stat.at(0) === filter}
+            />
+          );
+        })}
       </Stack>
     </RadioGroup>
   );

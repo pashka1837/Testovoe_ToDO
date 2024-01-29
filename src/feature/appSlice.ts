@@ -20,7 +20,7 @@ const initialState: CounterState = {
 };
 
 export const appSlice = createSlice({
-  name: "tasks",
+  name: "app",
   initialState,
   reducers: {
     setCreateTaskOpen(state, action: PayloadAction<boolean>) {
