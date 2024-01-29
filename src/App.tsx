@@ -1,24 +1,30 @@
-import CreateTask from "./Components/CreateTask";
-import DeleteTask from "./Components/DeleteTask";
-import EditTask from "./Components/EditTask";
-import Navbar from "./Components/Navbar/Navbar";
-import SingleTask from "./Components/SingleTask";
-import TaskList from "./Components/TaskList";
-import { useAppSelector } from "./hooks/hooks";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+
+import HomeLayout from "./Pages/HomeLayout";
+import Landing from "./Pages/Landing";
+import Login from "./Pages/Login";
+import SignUp from "./Pages/SignUp";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <HomeLayout />,
+    children: [
+      {
+        index: true,
+        element: <Landing />,
+      },
+    ],
+  },
+  { path: "/login", element: <Login /> },
+  {
+    path: "/sign-up",
+    element: <SignUp />,
+  },
+]);
 
 function App() {
-  const { isCreateTaskOpen, isDeleteTaskOpen, isEditTaskOpen, isTaskOpen } =
-    useAppSelector((store) => store.app);
-  return (
-    <main>
-      <Navbar />
-      <TaskList />
-      {isCreateTaskOpen && <CreateTask />}
-      {isDeleteTaskOpen && <DeleteTask />}
-      {isEditTaskOpen && <EditTask />}
-      {isTaskOpen && <SingleTask />}
-    </main>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

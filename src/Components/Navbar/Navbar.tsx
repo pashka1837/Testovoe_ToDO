@@ -2,8 +2,9 @@ import { Button, Sheet, Stack, Typography } from "@mui/joy";
 import { useAppDispatch } from "../../hooks/hooks";
 import { setCreateTaskOpen } from "../../feature/appSlice";
 import FilterRadioGroup from "./FilterRadioGroup";
+import { memo } from "react";
 
-export default function Navbar() {
+const Navbar = memo(() => {
   const dispatch = useAppDispatch();
   function handleCreateTask() {
     dispatch(setCreateTaskOpen(true));
@@ -28,4 +29,6 @@ export default function Navbar() {
       </Stack>
     </Sheet>
   );
-}
+});
+
+export default Navbar;
