@@ -1,30 +1,29 @@
-# React + TypeScript + Vite
+## Тестовое задание - ToDo List
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Для запуска проекта:
 
-Currently, two official plugins are available:
+#### 1. Открыть командную строку
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+#### 2. Перейти в папку с проектом
 
-## Expanding the ESLint configuration
+#### 3. Запустить команду npm run dev
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+#### 4. Стандартный логин и пароль для логина - test@test.coms, 1122334
 
-- Configure the top-level `parserOptions` property like this:
+### В проекте реализовано:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+#### 1. MirageJS сервер для демонстрации работы с запросами GET, POST, UPDATE, PATCH
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+#### 2. Типизация TypeScript
+
+#### 3. Возможность создания, редактирования и уадления карточек задач. При этом все эти действия происходят с непосредственными запросами на сервер MirageJS
+
+#### 4. Отображение списка задач с их тайтлом и статусом
+
+#### 5. Возможность открытия карточки для подробного изучения содержимого
+
+#### 6. Фильтрация карточек
+
+#### 7. Работа RTK Query с Optimistic updates
+
+#### 8. Аутенфикация
